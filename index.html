@@ -1917,6 +1917,35 @@ h1,h2,h3,
   }
 }
 
+/* ---- 9c. Single product line ----
+   One brand can't carry a 3-up grid, so it gets the same featured-card
+   treatment as the roll-up block: cut-corner glass panel, logo left,
+   name + spec pills right. */
+.brands--single{grid-template-columns:1fr;}
+.brands--single .brand{
+  display:grid;
+  grid-template-columns:minmax(280px,.9fr) minmax(0,1.1fr);
+  gap:clamp(28px,5vw,64px);
+  align-items:center;
+  padding:clamp(22px,3.2vw,38px);
+  border:1px solid rgba(8,24,46,.16);
+  border-radius:4px;
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.88),rgba(236,245,251,.72)),
+    linear-gradient(45deg,rgba(22,162,222,.09),rgba(225,28,36,.055));
+  box-shadow:0 28px 70px -56px rgba(8,24,46,.42);
+}
+.brands--single .brand-logo-card{min-height:clamp(230px,22vw,292px);margin-bottom:0;}
+.brands--single .brand:first-child .brand-logo-card img{max-width:72%;max-height:clamp(148px,15vw,208px);transform:none;}
+.brands--single .brand-tag{margin-bottom:.5rem;}
+.brands--single .brand-name{color:var(--ink);margin-bottom:.85rem;}
+.brands--single .brand p{max-width:40ch;margin-bottom:1.5rem;}
+.brands--single .product-pills{margin-top:0;}
+@media (max-width:980px){
+  .brands--single .brand{grid-template-columns:1fr;row-gap:1.6rem;}
+  .brands--single .brand-logo-card{min-height:200px;}
+}
 </style>
 </head>
 <body>
@@ -2080,7 +2109,7 @@ h1,h2,h3,
       </div>
       <div class="service reveal" data-d="1">
         <span class="mark"></span>
-        <div><h3>Print on glass — Digicote</h3><p>Color and custom designs printed straight onto glass for walls and dividers.</p></div>
+        <div><h3>Print on glass</h3><p>Color and custom designs printed straight onto glass for walls and dividers.</p></div>
       </div>
       <div class="service reveal">
         <span class="mark"></span>
@@ -2101,27 +2130,24 @@ h1,h2,h3,
       <p class="eyebrow">Our products</p>
       <h2 class="h-section">We make the hardware, too.</h2>
     </div>
-    <div class="brands">
+    <div class="brands brands--single">
       <div class="brand reveal">
-        <span class="brand-tag">Door accessories</span>
         <div class="brand-logo-card"><img src="grandeur.png" alt="Grandeur logo" /></div>
-        <div class="brand-role">Fittings · Hinges · Locks</div>
-        <p>Patch fittings, floor hinges, locksets, handles and overhead closers for frameless glass doors.</p>
-      </div>
-      <div class="brand reveal" data-d="1">
-        <span class="brand-tag">Print on glass</span>
-        <div class="brand-logo-card"><img src="digicote.png" alt="Digicote logo" /></div>
-        <div class="brand-role">Digital glass printing</div>
-        <p>Print-on-glass technology for wall interiors, dividers, backsplashes and glass boards — your colors, your design.</p>
-      </div>
-      <div class="brand reveal" data-d="2">
-        <span class="brand-tag">Glass sealant</span>
-        <div class="brand-logo-card"><img src="prism.png" alt="Prism logo" /></div>
-        <div class="brand-role">100% silicone</div>
-        <p>One-part, high-performance silicone with excellent weather resistance and durable adhesion.</p>
+        <div class="brand-copy">
+          <span class="brand-tag">Door accessories</span>
+          <div class="brand-name">Grandeur<span class="dot">.</span></div>
+          <p>Our own line of hardware for frameless glass doors.</p>
+          <div class="product-pills">
+            <span class="product-pill">Patch fittings</span>
+            <span class="product-pill">Floor hinges</span>
+            <span class="product-pill">Locksets</span>
+            <span class="product-pill">Handles</span>
+            <span class="product-pill">Overhead closers</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="brands-cta reveal" data-d="3">
+    <div class="brands-cta reveal" data-d="1">
       <p class="brands-cta-text"><b>Need pricing, availability or branch details?</b><br>Contact the Kimberly Glazing team directly for product inquiries.</p>
       <button type="button" class="btn btn-primary" data-contact-open>Contact us
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -2244,12 +2270,12 @@ h1,h2,h3,
       <div class="office">
         <h3>Manila <span class="tag">Head office</span></h3>
         <p class="addr">#78 Mendez Road, Baesa, Quezon City</p>
-        <p class="lines"><a href="tel:+63289986882">(02) 8998 6882</a> &nbsp;·&nbsp; <a href="tel:+63282419965">(02) 8241 9965</a></p>
+        <p class="lines"><a href="tel:+63282418864">(02) 8241 8864</a> &nbsp;·&nbsp; <a href="tel:+63282419965">(02) 8241 9965</a></p>
         <p><a href="mailto:customercare@kimberlyglazing.ph">customercare@kimberlyglazing.ph</a></p>
       </div>
       <div class="office">
         <h3>Cebu <span class="tag">Branch</span></h3>
-        <p class="addr">143 Plaridel St., Bridges Town Square, Brgy. Alang-Alang, Mandaue City</p>
+        <p class="addr">Lot 351 P. Remedio St., Brgy. Banilad, Mandaue City</p>
         <p class="lines"><a href="tel:+63325163289">(032) 516 3289</a> &nbsp;·&nbsp; <a href="tel:+63322365309">(032) 236 5309</a></p>
         <p><a href="mailto:customercarecebu@kimberlyglazing.ph">customercarecebu@kimberlyglazing.ph</a></p>
       </div>
@@ -2274,14 +2300,14 @@ h1,h2,h3,
         <span class="label">Manila · Head office</span>
         <h4>Baesa, Quezon City</h4>
         <p>#78 Mendez Road, Baesa, Quezon City</p>
-        <p><a href="tel:+63289986882">(02) 8998 6882</a></p>
+        <p><a href="tel:+63282418864">(02) 8241 8864</a></p>
         <p><a href="tel:+63282419965">(02) 8241 9965</a></p>
         <p><a href="mailto:customercare@kimberlyglazing.ph">customercare@kimberlyglazing.ph</a></p>
       </div>
       <div class="contact-card">
         <span class="label">Cebu · Branch</span>
         <h4>Mandaue City, Cebu</h4>
-        <p>143 Plaridel St., Bridges Town Square, Brgy. Alang-Alang, Mandaue City</p>
+        <p>Lot 351 P. Remedio St., Brgy. Banilad, Mandaue City</p>
         <p><a href="tel:+63325163289">(032) 516 3289</a></p>
         <p><a href="tel:+63322365309">(032) 236 5309</a></p>
         <p><a href="mailto:customercarecebu@kimberlyglazing.ph">customercarecebu@kimberlyglazing.ph</a></p>
@@ -2330,7 +2356,7 @@ h1,h2,h3,
     <div class="footer-bottom">
       <small>© <span id="year">2026</span> Kimberly Glazing &amp; Industrial Supply Inc. · Manila · Cebu</small>
       <div class="footer-social">
-        <a href="https://www.tokyotempura.com/" target="_blank" rel="noopener" aria-label="Facebook">
+        <a href="https://www.facebook.com/kimberlyglazing" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
         </a>
         <a href="https://www.linkedin.com/in/kimberlyglazing/" target="_blank" rel="noopener" aria-label="LinkedIn">
