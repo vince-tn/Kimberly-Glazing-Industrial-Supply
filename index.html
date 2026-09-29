@@ -1999,16 +1999,14 @@ h1,h2,h3,
    up with the column above them. */
 .about-grid{row-gap:clamp(18px,2.2vw,32px);column-gap:clamp(40px,6vw,90px);}
 .about-photo{
-  grid-column:1 / -1;
-  width:100vw;
-  margin:clamp(24px,3.2vw,46px) 0 calc(-1 * clamp(58px,7vw,104px));
-  margin-left:calc(50% - 50vw);
+  width:100%;
+  margin:0 0 calc(-1 * clamp(58px,7vw,104px));
   position:relative;
   overflow:hidden;
 }
 .about-photo img{
   display:block;width:100%;
-  height:clamp(330px,42vw,580px);
+  height:clamp(430px,48vw,680px);
   object-fit:cover;
   object-position:center 56%;
   filter:brightness(1.04) contrast(1.02);
@@ -2020,7 +2018,7 @@ h1,h2,h3,
 }
 .about-photo figcaption{
   position:absolute;bottom:0;z-index:2;
-  left:50%;transform:translateX(-50%);
+  left:0;right:0;margin-inline:auto;
   width:min(var(--container),calc(100% - (var(--side) * 2)));
   display:flex;align-items:flex-end;justify-content:space-between;
   gap:clamp(14px,2.4vw,40px);
@@ -2281,6 +2279,53 @@ h1,h2,h3,
   position:absolute;width:1px;height:1px;overflow:hidden;
   clip-path:inset(50%);white-space:nowrap;
 }
+
+/* ---- 9j. The mirror panel ----
+   The copy sits on the picture behind a sheet of frosted glass, held to
+   the container grid so its left edge lines up with everything else on
+   the page. Light panel on a dark shop floor, so it reads like a pane
+   leaning against the wall rather than a text box. */
+.about-note{
+  position:absolute;z-index:2;
+  top:0;bottom:clamp(88px,10vw,132px);
+  left:0;right:0;margin-inline:auto;
+  width:min(var(--container),calc(100% - (var(--side) * 2)));
+  display:flex;align-items:center;
+  pointer-events:none;
+}
+.about-note__panel{
+  pointer-events:auto;
+  position:relative;
+  overflow:hidden;
+  max-width:min(48%,540px);
+  padding:clamp(22px,2.6vw,38px);
+  border:1px solid rgba(255,255,255,.72);
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+  background:linear-gradient(152deg,rgba(255,255,255,.84),rgba(255,255,255,.64) 50%,rgba(234,238,242,.74));
+  backdrop-filter:blur(20px) saturate(1.35);
+  -webkit-backdrop-filter:blur(20px) saturate(1.35);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,1),inset 0 -28px 48px -34px rgba(18,26,36,.42);
+  color:var(--ink-soft);
+}
+/* the reflection running across the face */
+.about-note__panel::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(118deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.05) 28%,rgba(255,255,255,0) 54%,rgba(255,255,255,.3) 100%);
+}
+.about-note__panel > *{position:relative;z-index:1;}
+.about-note__panel p:not(.eyebrow){margin:0 0 1rem;font-size:.96rem;}
+.about-note__panel p:last-child{margin-bottom:0;}
+.about-note__panel .eyebrow{margin-bottom:.9rem;}
+
+@media (max-width:820px){
+  /* Overlaid it would bury the photograph - it drops underneath instead. */
+  .about-note{
+    position:static;transform:none;display:block;
+    margin:clamp(16px,3vw,26px) auto 0;
+    inset:auto;
+  }
+  .about-note__panel{max-width:none;}
+}
 </style>
 </head>
 <body>
@@ -2379,27 +2424,24 @@ h1,h2,h3,
 
 <!-- ============ ABOUT ============ -->
 <section class="section" id="about" style="scroll-margin-top:80px">
-  <div class="container about-grid">
-    <div class="reveal">
+  <figure class="about-photo reveal" data-d="2">
+    <img src="facility-floor.webp" alt="Kimberly Glazing fabrication floor, with glass stock racked behind the work benches" loading="lazy" />
+    <div class="about-note">
+      <div class="about-note__panel">
       <p class="eyebrow">Who we are</p>
-      <h2 class="h-section">Glass and aluminum, done <span class="accent">properly</span>.</h2>
-    </div>
-    <div class="about-body reveal" data-d="1">
       <p>Since <strong>2009</strong>, Kimberly Glazing &amp; Industrial Supply Inc. has shaped storefronts, offices and interiors across the Philippines as fabricator, contractor and installer.</p>
       <p>We don’t just source materials. We own the brands behind them, so the quality is ours to stand by from the panel to the fitting.</p>
+      </div>
     </div>
-    <figure class="about-photo reveal" data-d="2">
-      <img src="facility-floor.webp" alt="Kimberly Glazing fabrication floor, with glass stock racked behind the work benches" loading="lazy" />
-      <figcaption>
-        <span class="photo-where">Our fabrication floor — Quezon City</span>
-        <div class="stats">
-          <div class="stat"><div class="stat-num">2009</div><div class="stat-label">Established</div></div>
-          <div class="stat"><div class="stat-num">3</div><div class="stat-label">In-house brands</div></div>
-          <div class="stat"><div class="stat-num">2</div><div class="stat-label">Branches · MNL / CEB</div></div>
-        </div>
-      </figcaption>
-    </figure>
-  </div>
+    <figcaption>
+      <span class="photo-where">Our fabrication floor — Quezon City</span>
+      <div class="stats">
+      <div class="stat"><div class="stat-num">2009</div><div class="stat-label">Established</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">In-house brands</div></div>
+      <div class="stat"><div class="stat-num">2</div><div class="stat-label">Branches · MNL / CEB</div></div>
+      </div>
+    </figcaption>
+  </figure>
 </section>
 
 <!-- ============ SERVICES ============ -->
