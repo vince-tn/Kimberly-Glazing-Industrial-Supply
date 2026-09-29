@@ -766,6 +766,10 @@ body.modal-open{overflow:hidden;}
   --paper:#F3F7FB;
   --tint:#E9F1F8;
   --cut:18px;
+  /* One tone for every photograph. grayscale() first flattens the mixed
+     casts — warm phone snaps, sepia shop shots — then the sepia/hue-rotate
+     pair re-tints them cool so they sit in the blue-steel palette. */
+  --photo-tone:grayscale(1) sepia(.26) hue-rotate(166deg) saturate(1.5) contrast(1.07) brightness(1.02);
 }
 body{
   font-family:var(--font-body);
@@ -1747,7 +1751,7 @@ h1,h2,h3,
   background-position:center;
   background-attachment:fixed;
   opacity:.34;
-  filter:saturate(.65) contrast(.86) brightness(1.06);
+  filter:var(--photo-tone) contrast(.88) brightness(1.06);
 }
 #brands::after{
   content:"";
@@ -1785,7 +1789,7 @@ h1,h2,h3,
   background-position:center;
   background-attachment:fixed;
   opacity:.42;
-  filter:saturate(.70) contrast(.88) brightness(1.04);
+  filter:var(--photo-tone) contrast(.90) brightness(1.04);
   z-index:0;
 }
 .contact-section::after{
@@ -1847,6 +1851,11 @@ h1,h2,h3,
   #brands::before{
     background-attachment:scroll;
     opacity:.28;
+  }
+  #services::before,
+  #work::before{
+    background-attachment:scroll;
+    opacity:.22;
   }
   .contact-section::before{
     background-attachment:scroll;
@@ -2010,6 +2019,49 @@ h1,h2,h3,
   font-family:var(--font-mono);
   font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
 }
+
+/* ---- 9f. Photographs share one tone ----
+   Applied last so it beats the per-element filters set earlier. */
+.project-card img,
+.about-photo img,
+.rollup-media img{filter:var(--photo-tone);}
+.project-card:hover img{filter:var(--photo-tone) contrast(1.15) brightness(1.06);}
+.pane-photo{filter:var(--photo-tone) contrast(.78) brightness(1.15);}
+/* The shop originals are darker than the bright project interiors; a small
+   lift keeps the two galleries at a similar weight on a light page. */
+#shop .project-card img{filter:var(--photo-tone) brightness(1.09) contrast(.97);}
+#shop .project-card:hover img{filter:var(--photo-tone) brightness(1.13) contrast(1.05);}
+
+/* ---- 9g. Two more parallax bands ----
+   Services and Work pick up the same treatment as Products and Contact,
+   so the silver gradients carry our own floor underneath them. */
+#services,
+#work{position:relative;overflow:hidden;isolation:isolate;}
+#services::before,
+#work::before{
+  content:"";
+  position:absolute;
+  inset:-12% 0;
+  z-index:0;
+  pointer-events:none;
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  filter:var(--photo-tone) contrast(.90) brightness(1.05);
+  opacity:.30;
+}
+#services::before{
+  background-image:
+    linear-gradient(180deg,rgba(233,241,248,.90),rgba(213,228,240,.92)),
+    url("shop-hall.webp");
+}
+#work::before{
+  background-image:
+    linear-gradient(180deg,rgba(243,247,251,.91),rgba(225,236,245,.92)),
+    url("glass-and-frames.webp");
+}
+#services > *,
+#work > *{position:relative;z-index:1;}
 </style>
 </head>
 <body>
