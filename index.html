@@ -2499,6 +2499,79 @@ h1,h2,h3,
 .field input,
 .field textarea{padding:.92rem 1.05rem;}
 .field textarea{padding-top:.95rem;min-height:104px;}
+
+/* ---- 9m. Contact band, shop labels, footer ---- */
+
+/* The mirror broke the parallax: a transformed element becomes the
+   containing block for its own background, so background-attachment
+   fixed quietly degrades to scroll. The scroll handler at the foot of
+   the page drives --par instead, which keeps the flip and gives a
+   smoother travel than fixed ever did. */
+.contact-section{overflow:hidden;}
+.contact-section::before{
+  background-attachment:scroll;
+  transform:scaleX(-1) translateY(var(--par,0px));
+  will-change:transform;
+}
+
+/* Heading and standfirst drop to the foot of their column. */
+.contact-top{align-items:stretch;}
+.contact-intro{
+  align-self:stretch;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:clamp(18px,3.4vw,56px);
+}
+.contact-intro .lead{margin-bottom:0;}
+
+/* The branch details get their own sheet. */
+.contact-offices{
+  margin-top:clamp(30px,4vw,56px);
+  padding:clamp(22px,2.6vw,38px) clamp(24px,3vw,44px);
+  clip-path:var(--chamfer-m);
+  background:linear-gradient(152deg,rgba(255,255,255,.54),rgba(255,255,255,.32) 50%,rgba(232,236,240,.46));
+  backdrop-filter:blur(22px) saturate(1.25);
+  -webkit-backdrop-filter:blur(22px) saturate(1.25);
+  border:1px solid rgba(255,255,255,.64);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.92),inset 0 -26px 44px -32px rgba(18,26,36,.3);
+}
+.contact-offices .office:first-of-type{padding-top:0;}
+
+/* ---- Shop labels: no plate, just type on the picture ---- */
+.shop-tile figcaption{
+  position:absolute;
+  left:clamp(16px,1.8vw,28px);
+  right:clamp(16px,1.8vw,28px);
+  padding:0;
+  background:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+  border:0;
+  box-shadow:none;
+  clip-path:none;
+  color:#fff;
+  text-align:left;
+  text-shadow:0 1px 3px rgba(0,0,0,.66),0 0 20px rgba(0,0,0,.42);
+}
+/* A scrim only at the end the label sits on - the type has to read over
+   the light patches too, and a plate is what we just took off. */
+.shop-tile::after{
+  content:"";position:absolute;left:0;right:0;height:38%;
+  pointer-events:none;
+}
+.shop-tile:nth-child(odd)::after{top:0;background:linear-gradient(180deg,rgba(8,10,14,.62),transparent);}
+.shop-tile:nth-child(even)::after{bottom:0;background:linear-gradient(0deg,rgba(8,10,14,.62),transparent);}
+.shop-tile figcaption{z-index:2;}
+
+/* Alternating, so the eye travels across the strip. */
+.shop-tile:nth-child(odd) figcaption{top:clamp(16px,2vw,30px);bottom:auto;}
+.shop-tile:nth-child(even) figcaption{bottom:clamp(16px,2vw,30px);top:auto;}
+.shop-tile:nth-child(3) figcaption,
+.shop-tile:nth-child(4) figcaption{text-align:right;}
+
+/* ---- Footer: graphite, not black ---- */
+.site-footer{
+  background:linear-gradient(180deg,#3B352D 0%,#2B261F 100%) !important;
+}
 </style>
 </head>
 <body>
@@ -2810,6 +2883,7 @@ h1,h2,h3,
     <div class="contact-grid contact-top">
       <div class="contact-intro reveal">
         <h2 class="h-section">Let’s talk <span class="accent">glass</span>.</h2>
+        <p class="lead">Tell us what you’re building. We’ll handle the rest</p>
       </div>
 
       <!-- Front-end form. Default opens the visitor's mail app (works on a static host).
@@ -3023,6 +3097,32 @@ form.addEventListener('submit', (e) => {
   window.location.href = `mailto:customercare@kimberlyglazing.ph?subject=${encodeURIComponent(subject)}&body=${body}`;
   note.textContent = 'Opening your mail app…';
 });
+
+/* The contact band is mirrored, and a transformed element cannot host a
+   fixed-attachment background, so its travel is driven here. Driven off
+   rAF rather than a scroll listener, and gated by an observer so the
+   loop only runs while the band is actually on screen. */
+(function () {
+  var band = document.querySelector('.contact-section');
+  if (!band || !window.IntersectionObserver) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var running = false;
+  function frame() {
+    if (!running) return;
+    var top = band.getBoundingClientRect().top;
+    band.style.setProperty('--par', ((innerHeight - top) * 0.08).toFixed(1) + 'px');
+    requestAnimationFrame(frame);
+  }
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        if (!running) { running = true; requestAnimationFrame(frame); }
+      } else {
+        running = false;
+      }
+    });
+  }, { rootMargin: '140px 0px' }).observe(band);
+})();
 </script>
 </body>
 </html>
