@@ -1742,7 +1742,7 @@ h1,h2,h3,
   pointer-events:none;
   background-image:
     linear-gradient(180deg,rgba(226,237,246,.92),rgba(202,220,233,.92)),
-    url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80");
+    url("shop-texture.webp");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
@@ -1983,6 +1983,33 @@ h1,h2,h3,
 @media (max-width:640px){
   .spec-grid{grid-template-columns:1fr;}
 }
+
+/* ---- 9e. About facility photo ----
+   Spans the about grid and carries the same cut-corner card language. */
+.about-photo{
+  grid-column:1 / -1;
+  margin:clamp(34px,4.5vw,60px) 0 0;
+  border:1px solid rgba(8,24,46,.12);
+  border-radius:4px;
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+  overflow:hidden;
+  box-shadow:0 30px 72px -58px rgba(8,24,46,.62);
+  position:relative;
+}
+.about-photo img{
+  display:block;width:100%;
+  height:clamp(230px,30vw,430px);
+  object-fit:cover;
+  filter:saturate(.92) contrast(1.05);
+}
+.about-photo figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:.72rem clamp(14px,2vw,22px);
+  background:linear-gradient(180deg,rgba(8,24,46,0),rgba(8,24,46,.78));
+  color:#fff;
+  font-family:var(--font-mono);
+  font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+}
 </style>
 </head>
 <body>
@@ -2064,7 +2091,7 @@ h1,h2,h3,
         <div class="pane pane-3"></div>
         <div class="pane pane-2"></div>
         <div class="pane pane-1">
-          <img class="pane-photo" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&amp;fit=crop&amp;w=1100&amp;q=80" alt="Glass curtain-wall facade" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()" />
+          <img class="pane-photo" src="shop-glass-panel.webp" alt="Glazier moving a large glass panel on the fabrication floor" />
           <span class="pane-overlay"></span>
           <span class="pane-sweep"></span>
           <svg class="pane-mark"><use href="#kg-logo"/></svg>
@@ -2095,6 +2122,10 @@ h1,h2,h3,
         <div class="stat"><div class="stat-num">2</div><div class="stat-label">Branches · MNL / CEB</div></div>
       </div>
     </div>
+    <figure class="about-photo reveal" data-d="2">
+      <img src="facility-floor.webp" alt="Kimberly Glazing fabrication floor, with glass stock racked behind the work benches" loading="lazy" />
+      <figcaption>Our fabrication floor — Quezon City</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -2159,6 +2190,35 @@ h1,h2,h3,
     </div>
   </div>
 </section>
+
+<!-- ============ SHOP ============ -->
+<section class="section" id="shop" style="scroll-margin-top:80px">
+  <div class="container">
+    <div class="work-head reveal">
+      <p class="eyebrow">Inside the shop</p>
+      <h2 class="h-section">Cut, framed, finished.</h2>
+    </div>
+    <div class="project-gallery reveal" data-d="1" aria-label="Fabrication photos">
+      <figure class="project-card">
+        <img src="aluminum-profiles.webp" alt="Aluminum extrusion profiles racked in the shop" loading="lazy" />
+        <figcaption>Aluminum stock</figcaption>
+      </figure>
+      <figure class="project-card">
+        <img src="frame-assembly.webp" alt="Fabricator assembling an aluminum frame at the bench" loading="lazy" />
+        <figcaption>Frame assembly</figcaption>
+      </figure>
+      <figure class="project-card">
+        <img src="frame-detail.webp" alt="Corner joint and hardware on a finished aluminum frame" loading="lazy" />
+        <figcaption>Hardware fit-out</figcaption>
+      </figure>
+      <figure class="project-card">
+        <img src="glass-and-frames.webp" alt="Glass sheets racked beside completed window frames" loading="lazy" />
+        <figcaption>Ready to ship</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 
 <!-- ============ BRANDS ============ -->
 <section class="section section--dark" id="brands" style="scroll-margin-top:80px">
