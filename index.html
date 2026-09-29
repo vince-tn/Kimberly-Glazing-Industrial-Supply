@@ -2620,62 +2620,47 @@ h1,h2,h3,
 /* Heading sits lower still. */
 .contact-intro{padding-bottom:clamp(2px,.8vw,12px);}
 
-/* ---- 9o. Products band goes dark ----
-   It was pale card on pale panel on pale band - three greys within a few
-   percent of each other and nothing to look at. Dark makes this the one
-   anchor between the light sections, and the Grandeur plate finally
-   reads as a lit panel rather than a white rectangle on white. */
-#brands{
-  background:
-    radial-gradient(54% 78% at 8% 2%,rgba(22,162,222,.18),transparent 62%),
-    radial-gradient(46% 68% at 94% 100%,rgba(225,28,36,.13),transparent 66%),
-    linear-gradient(180deg,#242119 0%,#17150F 100%);
-  color:#B6AFA4;
-}
-#brands::before{
-  background-image:
-    linear-gradient(180deg,rgba(20,18,14,.8),rgba(12,11,8,.88)),
-    url("aluminum-profiles.webp");
-  opacity:.6;
-  filter:grayscale(1) contrast(1.05) brightness(.95);
-}
-#brands .h-section{color:#F4F0E9;}
-#brands .h-section .accent{color:var(--red);}
-#brands .eyebrow{color:#FF6B72;}
-#brands .brand-tag{color:#8FDCFF;}
-#brands .brand-name{color:#fff;}
-#brands .brand p{color:#BEB7AC;}
-#brands .brands-cta{border-top-color:rgba(255,255,255,.15);}
-#brands .brands-cta-text{color:#BEB7AC;}
-#brands .brands-cta-text b{color:#fff;}
 
-/* The panel is tinted glass now, not frosted white. */
-#brands .brands--single .brand{
-  background-image:linear-gradient(152deg,rgba(255,255,255,.1),rgba(255,255,255,.035) 52%,rgba(255,255,255,.07));
-  border-color:rgba(255,255,255,.18);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -28px 48px -34px rgba(0,0,0,.55);
+/* ---- 9o. The product, not just the mark ----
+   A logo on an empty plate plus five words is a brand slide, not a
+   product. The panel is a photograph of the hardware now, with the mark
+   sitting on a sheet of glass across its foot. */
+.brand-shot{
+  position:relative;
+  margin:0;
+  overflow:hidden;
+  border:1px solid rgba(38,28,18,.16);
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
 }
-/* The logo plate stays light, so on this band it glows. */
-#brands .brand:first-child .brand-logo-card img{
-  max-width:80%;
-  max-height:clamp(168px,17vw,238px);
+.brand-shot img{
+  display:block;width:100%;
+  height:clamp(270px,27vw,380px);
+  object-fit:cover;
+  object-position:58% 42%;
+  filter:saturate(.98) contrast(1.07);
 }
-
-#brands .spec{
-  background:linear-gradient(152deg,rgba(255,255,255,.13),rgba(255,255,255,.05));
-  border-color:rgba(255,255,255,.2);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.26);
-  color:#E8E3DB;
+.brand-shot::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:52%;
+  background:linear-gradient(180deg,rgba(10,14,18,0),rgba(10,14,18,.5));
+  pointer-events:none;
 }
-#brands .spec:hover{
-  background:linear-gradient(152deg,rgba(255,255,255,.21),rgba(255,255,255,.09));
-  border-color:rgba(255,255,255,.36);
+.brand-badge{
+  position:absolute;z-index:1;
+  left:0;bottom:0;
+  padding:clamp(14px,1.6vw,20px) clamp(22px,2.4vw,32px);
+  background:linear-gradient(152deg,rgba(255,255,255,.8),rgba(255,255,255,.58) 55%,rgba(238,242,245,.68));
+  backdrop-filter:blur(20px) saturate(1.3);
+  -webkit-backdrop-filter:blur(20px) saturate(1.3);
+  border-top:1px solid rgba(255,255,255,.8);
+  border-right:1px solid rgba(255,255,255,.8);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95);
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
 }
-#brands .spec-ico{
-  background:linear-gradient(150deg,rgba(255,255,255,.17),rgba(255,255,255,.06));
-  border-color:rgba(143,220,255,.36);
-  color:#8FDCFF;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.32);
+.brand-badge img{
+  display:block;
+  height:clamp(36px,3.8vw,54px);
+  width:auto;
+  filter:drop-shadow(0 2px 4px rgba(8,24,46,.18));
 }
 </style>
 </head>
@@ -2889,7 +2874,10 @@ h1,h2,h3,
     </div>
     <div class="brands brands--single">
       <div class="brand reveal">
-        <div class="brand-logo-card"><img src="grandeur.png" alt="Grandeur logo" /></div>
+        <figure class="brand-shot">
+        <img src="frame-detail.webp" alt="Grandeur patch fitting and corner hardware on a frameless glass frame" loading="lazy" />
+        <span class="brand-badge"><img src="grandeur.png" alt="Grandeur" /></span>
+      </figure>
         <div class="brand-copy">
           <span class="brand-tag">Door accessories</span>
           <div class="brand-name">Grandeur<span class="dot">.</span></div>
