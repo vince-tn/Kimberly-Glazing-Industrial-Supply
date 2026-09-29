@@ -2572,6 +2572,53 @@ h1,h2,h3,
 .site-footer{
   background:linear-gradient(180deg,#3B352D 0%,#2B261F 100%) !important;
 }
+
+/* ---- 9n. Red eyebrow, shop labels, liquid branch bar ---- */
+
+/* The label carries the red; the rule outside it is left alone. */
+.about-note__panel .eyebrow span{
+  background:var(--red);
+  color:#fff;
+  padding:.3em .72em;
+  display:inline-block;
+}
+.about-note__panel .eyebrow{margin-bottom:1.1rem;}
+
+/* Shop labels: all at the top, all centred, scrim following them. */
+.shop-tile figcaption,
+.shop-tile:nth-child(even) figcaption{
+  top:clamp(16px,2vw,30px);
+  bottom:auto;
+  text-align:center;
+}
+.shop-tile:nth-child(3) figcaption,
+.shop-tile:nth-child(4) figcaption{text-align:center;}
+.shop-tile:nth-child(even)::after{
+  top:0;bottom:auto;
+  background:linear-gradient(180deg,rgba(8,10,14,.62),transparent);
+}
+
+/* ---- The branch bar: full bleed, and thinner glass ----
+   Less white with far more blur reads as liquid rather than frosted
+   fibreglass, and padding-inline keeps the content on the container
+   grid while the sheet itself runs to both edges. */
+.contact-section{padding-bottom:0;}
+.contact-offices{
+  width:100%;
+  margin:clamp(30px,4vw,56px) 0 0;
+  padding-block:clamp(26px,3vw,44px);
+  padding-inline:max(var(--side),calc(50% - (var(--container) / 2)));
+  clip-path:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.14));
+  backdrop-filter:blur(34px) saturate(1.45);
+  -webkit-backdrop-filter:blur(34px) saturate(1.45);
+  border:0;
+  border-top:1px solid rgba(255,255,255,.5);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
+}
+
+/* Heading sits lower still. */
+.contact-intro{padding-bottom:clamp(2px,.8vw,12px);}
 </style>
 </head>
 <body>
@@ -2674,7 +2721,7 @@ h1,h2,h3,
     <img src="facility-floor.webp" alt="Kimberly Glazing fabrication floor, with glass stock racked behind the work benches" loading="lazy" />
     <div class="about-note">
       <div class="about-note__panel">
-      <p class="eyebrow">Who we are</p>
+      <p class="eyebrow"><span>Who we are</span></p>
       <p>Since <strong>2009</strong>, Kimberly Glazing &amp; Industrial Supply Inc. has shaped storefronts, offices and interiors across the Philippines as fabricator, contractor and installer.</p>
       <p>We don’t just source materials. We own the brands behind them, so the quality is ours to stand by from the panel to the fitting.</p>
       </div>
@@ -2916,20 +2963,19 @@ h1,h2,h3,
         </div>
       </form>
     </div>
-
-    <div class="offices contact-offices reveal" data-d="2" aria-label="Kimberly Glazing office contact details">
-      <div class="office">
-        <h3>Manila <span class="tag">Head office</span></h3>
-        <p class="addr">#78 Mendez Road, Baesa, Quezon City</p>
-        <p class="lines"><a href="tel:+63282418864">(02) 8241 8864</a> &nbsp;·&nbsp; <a href="tel:+63282419965">(02) 8241 9965</a></p>
-        <p><a href="mailto:customercare@kimberlyglazing.ph">customercare@kimberlyglazing.ph</a></p>
-      </div>
-      <div class="office">
-        <h3>Cebu <span class="tag">Branch</span></h3>
-        <p class="addr">Lot 351 P. Remedio St., Brgy. Banilad, Mandaue City</p>
-        <p class="lines"><a href="tel:+63325163289">(032) 516 3289</a> &nbsp;·&nbsp; <a href="tel:+63322365309">(032) 236 5309</a></p>
-        <p><a href="mailto:customercarecebu@kimberlyglazing.ph">customercarecebu@kimberlyglazing.ph</a></p>
-      </div>
+  </div>
+  <div class="offices contact-offices reveal" data-d="2" aria-label="Kimberly Glazing office contact details">
+    <div class="office">
+      <h3>Manila <span class="tag">Head office</span></h3>
+      <p class="addr">#78 Mendez Road, Baesa, Quezon City</p>
+      <p class="lines"><a href="tel:+63282418864">(02) 8241 8864</a> &nbsp;·&nbsp; <a href="tel:+63282419965">(02) 8241 9965</a></p>
+      <p><a href="mailto:customercare@kimberlyglazing.ph">customercare@kimberlyglazing.ph</a></p>
+    </div>
+    <div class="office">
+      <h3>Cebu <span class="tag">Branch</span></h3>
+      <p class="addr">Lot 351 P. Remedio St., Brgy. Banilad, Mandaue City</p>
+      <p class="lines"><a href="tel:+63325163289">(032) 516 3289</a> &nbsp;·&nbsp; <a href="tel:+63322365309">(032) 236 5309</a></p>
+      <p><a href="mailto:customercarecebu@kimberlyglazing.ph">customercarecebu@kimberlyglazing.ph</a></p>
     </div>
   </div>
 </section>
@@ -3110,7 +3156,7 @@ form.addEventListener('submit', (e) => {
   function frame() {
     if (!running) return;
     var top = band.getBoundingClientRect().top;
-    band.style.setProperty('--par', ((innerHeight - top) * 0.08).toFixed(1) + 'px');
+    band.style.setProperty('--par', ((innerHeight - top) * 0.17).toFixed(1) + 'px');
     requestAnimationFrame(frame);
   }
   new IntersectionObserver(function (entries) {
