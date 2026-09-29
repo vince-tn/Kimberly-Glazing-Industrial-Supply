@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kimberly Glazing &amp; Industrial Supply Inc. — Goes beyond the usual</title>
 <meta name="description" content="High-quality glass, aluminum and glazing in the Philippines. Fabrication, installation, mirrors, print-on-glass, roll-up doors and repair. Manila &amp; Cebu. Since 2009." />
-<meta name="theme-color" content="#EDF4FA" />
+<meta name="theme-color" content="#F2EEE8" />
 
 <!-- Use the real Kimberly Glazing logo as favicon -->
 <link rel="icon" href="kimberly-glazing.png" type="image/png" />
@@ -43,9 +43,9 @@
   --navy:#08182E;         /* deep section background              */
   --navy-2:#0d2543;       /* layered navy                         */
   --ink:#0E1A2B;          /* headings on light                    */
-  --ink-soft:#46586d;     /* body text on light                   */
-  --paper:#F4F7FB;        /* light background                     */
-  --tint:#EAF0F7;         /* faint cool tint                      */
+  --ink-soft:#524B43;     /* body text on light                   */
+  --paper:#F7F5F2;        /* light background                     */
+  --tint:#EFEBE5;         /* faint cool tint                      */
   --white:#ffffff;
 
   --line:rgba(13,32,55,.12);      /* hairline on light            */
@@ -762,14 +762,15 @@ body.modal-open{overflow:hidden;}
   --navy:#061426;
   --navy-2:#0A203A;
   --ink:#071426;
-  --ink-soft:#405168;
-  --paper:#F3F7FB;
-  --tint:#E9F1F8;
+  --ink-soft:#4E4740;
+  --paper:#F7F5F2;
+  --tint:#EFEBE5;
   --cut:18px;
   /* One tone for every photograph. grayscale() first flattens the mixed
-     casts — warm phone snaps, sepia shop shots — then the sepia/hue-rotate
-     pair re-tints them cool so they sit in the blue-steel palette. */
-  --photo-tone:grayscale(1) sepia(.26) hue-rotate(166deg) saturate(1.5) contrast(1.07) brightness(1.02);
+     casts, then sepia() re-tints them warm. The surfaces below are warmed
+     to match; red and azure stay untouched so the brand still reads. */
+  --photo-tone:grayscale(1) sepia(.46) saturate(1.06) contrast(1.05) brightness(1.02);
+  --photo-tone-bg:grayscale(1) sepia(.20) contrast(.98) brightness(1.02);
 }
 body{
   font-family:var(--font-body);
@@ -1104,14 +1105,14 @@ h1,h2,h3,
    - keeps contrast through steel-blue tints and fine dark lines
    ============================================================ */
 :root{
-  --navy:#DCE8F2;
-  --navy-2:#C8DAE8;
+  --navy:#E9E2D9;
+  --navy-2:#DCD2C6;
   --ink:#08182E;
-  --ink-soft:#41546B;
-  --paper:#F7FAFD;
-  --tint:#EAF2F8;
-  --line:rgba(8,24,46,.14);
-  --line-d:rgba(8,24,46,.14);
+  --ink-soft:#4E4740;
+  --paper:#F9F7F3;
+  --tint:#F0EBE4;
+  --line:rgba(38,28,18,.14);
+  --line-d:rgba(38,28,18,.14);
 }
 body{
   background:var(--paper);
@@ -1134,7 +1135,7 @@ body{
 .brand-text span,
 .scrolled .brand-text span{color:#607188;}
 .nav-links a,
-.scrolled .nav-links a{color:#26384D;}
+.scrolled .nav-links a{color:#332E27;}
 .nav-links a:hover,
 .scrolled .nav-links a:hover{color:var(--red-text);}
 .nav-toggle span,
@@ -1146,7 +1147,7 @@ body{
   background:
     radial-gradient(42% 48% at 50% 35%,rgba(22,162,222,.15),transparent 66%),
     radial-gradient(44% 52% at 50% 82%,rgba(225,28,36,.08),transparent 68%),
-    linear-gradient(180deg,#FCFEFF 0%,#EEF5FA 48%,#DDEAF4 100%);
+    linear-gradient(180deg,#FCFBF9 0%,#F2EDE6 48%,#E4DCD0 100%);
 }
 .hero::before{
   background-image:
@@ -1205,14 +1206,14 @@ body{
   background:
     radial-gradient(52% 76% at 7% 6%,rgba(22,162,222,.14),transparent 62%),
     radial-gradient(42% 64% at 92% 100%,rgba(225,28,36,.07),transparent 66%),
-    linear-gradient(180deg,#EDF4FA 0%,#DDE9F3 100%);
-  color:#42536A;
+    linear-gradient(180deg,#F2EEE8 0%,#E3DBD0 100%);
+  color:#504942;
   border-block:1px solid rgba(8,24,46,.10);
 }
 .section--dark h2,
 .section--dark h3,
 .section--dark .stat-num{color:var(--ink);}
-.section--dark .lead{color:#26384D;}
+.section--dark .lead{color:#332E27;}
 .section--dark .eyebrow{color:var(--red-text);}
 .section--dark .eyebrow::before{background:linear-gradient(90deg,var(--blue),#8fe9ff,var(--red));}
 .section--dark .h-section .accent{color:var(--red);}
@@ -1228,12 +1229,12 @@ body{
 }
 .brand:not(:first-child){border-left-color:rgba(8,24,46,.12);}
 .brand-tag{color:#0D6F9F;}
-.brand-role{color:#586A80;}
-.brand p{color:#405168;}
+.brand-role{color:#665E54;}
+.brand p{color:#4E4740;}
 .brands-cta{
   border-top-color:rgba(8,24,46,.14);
 }
-.brands-cta-text{color:#405168;}
+.brands-cta-text{color:#4E4740;}
 .brands-cta-text b{color:var(--ink);}
 .brand-logo-card{
   background:
@@ -1249,7 +1250,7 @@ body{
 /* Keep contrast, but use lighter architectural surfaces. */
 .section--tint{
   background:
-    linear-gradient(180deg,#EEF6FB 0%,#E7F0F7 100%);
+    linear-gradient(180deg,#F5F1EB 0%,#EAE3DA 100%);
 }
 .rollup-feature{
   background:
@@ -1275,8 +1276,8 @@ body{
 }
 .site-footer{
   background:
-    linear-gradient(180deg,#E7F0F7 0%,#D9E7F2 100%);
-  color:#405168;
+    linear-gradient(180deg,#EAE3DA 0%,#DBD2C6 100%);
+  color:#4E4740;
   border-top:1px solid rgba(8,24,46,.12);
 }
 .footer-top{border-bottom-color:rgba(8,24,46,.12);}
@@ -1285,12 +1286,12 @@ body{
 .footer-slogan{color:var(--ink);}
 .footer-slogan .accent{color:var(--red);}
 .footer-col h4{color:#0D6F9F;}
-.footer-col a{color:#405168;}
+.footer-col a{color:#4E4740;}
 .footer-col a:hover{color:var(--red-text);}
 .footer-col .meta{color:#52657B;}
 .footer-bottom small{color:#64758B;}
 .footer-social a{border-color:rgba(8,24,46,.16);background:rgba(255,255,255,.28);}
-.footer-social svg{fill:#405168;}
+.footer-social svg{fill:#4E4740;}
 .footer-social a:hover{background:var(--red);border-color:var(--red);}
 .footer-social a:hover svg{fill:#fff;}
 
@@ -1308,14 +1309,14 @@ body{
    - bright site retained, but slightly more steel-toned
    ============================================================ */
 :root{
-  --paper:#F2F7FB;
-  --tint:#E3EDF5;
-  --navy:#D3E1EC;
-  --navy-2:#C3D6E5;
+  --paper:#F6F3EE;
+  --tint:#EBE5DC;
+  --navy:#E0D8CC;
+  --navy-2:#D2C8B9;
   --ink:#071426;
-  --ink-soft:#3D5067;
-  --line:rgba(8,24,46,.17);
-  --line-d:rgba(8,24,46,.16);
+  --ink-soft:#4B4439;
+  --line:rgba(38,28,18,.17);
+  --line-d:rgba(38,28,18,.16);
   --font-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --font-body:"IBM Plex Sans",system-ui,sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -1376,7 +1377,7 @@ h1,h2,h3,
   background:
     radial-gradient(42% 48% at 50% 35%,rgba(22,162,222,.18),transparent 66%),
     radial-gradient(44% 52% at 50% 82%,rgba(225,28,36,.10),transparent 68%),
-    linear-gradient(180deg,#F6FAFD 0%,#E5EFF7 48%,#CBDDEB 100%);
+    linear-gradient(180deg,#FAF8F4 0%,#F0EBE3 48%,#DFD5C7 100%);
 }
 .hero::after{
   border-color:rgba(8,24,46,.20);
@@ -1386,7 +1387,7 @@ h1,h2,h3,
     0 28px 86px rgba(8,24,46,.12);
 }
 .section--tint{
-  background:linear-gradient(180deg,#E8F1F8 0%,#DDE9F3 100%);
+  background:linear-gradient(180deg,#EEE9E2 0%,#E1D9CE 100%);
 }
 .section--dark{
   background:
@@ -1745,13 +1746,13 @@ h1,h2,h3,
   z-index:0;
   pointer-events:none;
   background-image:
-    linear-gradient(180deg,rgba(226,237,246,.92),rgba(202,220,233,.92)),
+    linear-gradient(180deg,rgba(246,242,236,.74),rgba(226,216,202,.78)),
     url("shop-texture.webp");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  opacity:.34;
-  filter:var(--photo-tone) contrast(.88) brightness(1.06);
+  opacity:.62;
+  filter:var(--photo-tone-bg) contrast(.94) brightness(1.04);
 }
 #brands::after{
   content:"";
@@ -1783,13 +1784,13 @@ h1,h2,h3,
   inset:-12% 0;
   pointer-events:none;
   background-image:
-    linear-gradient(180deg,rgba(229,240,248,.88),rgba(207,222,234,.90)),
-    url("glaze.jpg");
+    linear-gradient(180deg,rgba(246,242,236,.72),rgba(228,218,204,.78)),
+    url("client-meeting.webp");
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  opacity:.42;
-  filter:var(--photo-tone) contrast(.90) brightness(1.04);
+  opacity:.64;
+  filter:var(--photo-tone-bg) contrast(.95) brightness(1.03);
   z-index:0;
 }
 .contact-section::after{
@@ -1850,16 +1851,21 @@ h1,h2,h3,
 @media (max-width:980px){
   #brands::before{
     background-attachment:scroll;
-    opacity:.28;
+    opacity:.50;
   }
   #services::before,
   #work::before{
     background-attachment:scroll;
-    opacity:.22;
+    opacity:.50;
+  }
+  #about::before,
+  #shop::before{
+    background-attachment:scroll;
+    opacity:.42;
   }
   .contact-section::before{
     background-attachment:scroll;
-    opacity:.34;
+    opacity:.52;
   }
   .contact-top{
     grid-template-columns:1fr;
@@ -1997,7 +2003,7 @@ h1,h2,h3,
    Spans the about grid and carries the same cut-corner card language. */
 .about-photo{
   grid-column:1 / -1;
-  margin:clamp(34px,4.5vw,60px) 0 0;
+  margin:0;
   border:1px solid rgba(8,24,46,.12);
   border-radius:4px;
   clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
@@ -2023,8 +2029,8 @@ h1,h2,h3,
 /* ---- 9f. Photographs share one tone ----
    Applied last so it beats the per-element filters set earlier. */
 .project-card img,
-.about-photo img,
 .rollup-media img{filter:var(--photo-tone);}
+.about-photo img{filter:var(--photo-tone) brightness(1.08) contrast(.97);}
 .project-card:hover img{filter:var(--photo-tone) contrast(1.15) brightness(1.06);}
 .pane-photo{filter:var(--photo-tone) contrast(.78) brightness(1.15);}
 /* The shop originals are darker than the bright project interiors; a small
@@ -2032,13 +2038,17 @@ h1,h2,h3,
 #shop .project-card img{filter:var(--photo-tone) brightness(1.09) contrast(.97);}
 #shop .project-card:hover img{filter:var(--photo-tone) brightness(1.13) contrast(1.05);}
 
-/* ---- 9g. Two more parallax bands ----
-   Services and Work pick up the same treatment as Products and Contact,
-   so the silver gradients carry our own floor underneath them. */
+/* ---- 9g. Parallax bands ----
+   The wash is deliberately thin so the photograph reads through it;
+   --photo-tone-bg keeps the sepia off the gradient itself. */
 #services,
-#work{position:relative;overflow:hidden;isolation:isolate;}
+#work,
+#about,
+#shop{position:relative;overflow:hidden;isolation:isolate;}
 #services::before,
-#work::before{
+#work::before,
+#about::before,
+#shop::before{
   content:"";
   position:absolute;
   inset:-12% 0;
@@ -2047,21 +2057,37 @@ h1,h2,h3,
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
-  filter:var(--photo-tone) contrast(.90) brightness(1.05);
-  opacity:.30;
+  filter:var(--photo-tone-bg) contrast(.95) brightness(1.03);
+  opacity:.60;
 }
 #services::before{
   background-image:
-    linear-gradient(180deg,rgba(233,241,248,.90),rgba(213,228,240,.92)),
+    linear-gradient(180deg,rgba(246,242,236,.72),rgba(228,218,204,.78)),
     url("shop-hall.webp");
 }
 #work::before{
   background-image:
-    linear-gradient(180deg,rgba(243,247,251,.91),rgba(225,236,245,.92)),
+    linear-gradient(180deg,rgba(247,244,239,.74),rgba(230,220,206,.78)),
     url("glass-and-frames.webp");
 }
+/* About carries the most copy, so its wash stays heavier. */
+#about::before{
+  background-image:
+    linear-gradient(180deg,rgba(247,244,239,.82),rgba(232,223,210,.86)),
+    url("shop-texture.webp");
+  opacity:.50;
+}
+#shop::before{
+  background-image:
+    linear-gradient(180deg,rgba(247,244,239,.80),rgba(231,222,209,.84)),
+    url("frame-detail.webp");
+  opacity:.48;
+}
 #services > *,
-#work > *{position:relative;z-index:1;}
+#work > *,
+#about > *,
+#shop > *{position:relative;z-index:1;}
+
 </style>
 </head>
 <body>
