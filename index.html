@@ -2407,6 +2407,98 @@ h1,h2,h3,
 .footer-social a:hover{background:var(--red);border-color:var(--red);}
 .footer-social svg{fill:#B6AFA4;}
 .footer-social a:hover svg{fill:#fff;}
+
+/* ---- 9l. Smoked glass, the shop strip, and the contact band ---- */
+
+/* The About panel was fighting itself: white at low alpha over a
+   near-black photograph just goes muddy, and brightness() is
+   multiplicative so it barely lifts a black pixel. Tinted glass with
+   light type instead - genuinely see-through, and high contrast. */
+.about-note__panel{
+  background:linear-gradient(152deg,rgba(16,20,26,.42),rgba(16,20,26,.2) 50%,rgba(8,12,16,.38));
+  backdrop-filter:blur(18px) saturate(1.08);
+  -webkit-backdrop-filter:blur(18px) saturate(1.08);
+  border:1px solid rgba(255,255,255,.3);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.34),inset 0 -26px 46px -34px rgba(0,0,0,.45);
+  color:rgba(255,255,255,.94);
+}
+.about-note__panel::before{
+  background:linear-gradient(118deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.03) 30%,rgba(255,255,255,0) 58%,rgba(255,255,255,.14) 100%);
+}
+.about-note__panel p:not(.eyebrow){color:rgba(255,255,255,.94);}
+.about-note__panel strong{color:#fff;}
+@media (max-width:820px){
+  /* Below here the panel drops onto the light page rather than the
+     photograph, so the tint and the type both have to flip back. */
+  .about-note__panel{
+    background:linear-gradient(152deg,rgba(255,255,255,.74),rgba(255,255,255,.52) 50%,rgba(234,238,242,.62));
+    border-color:rgba(255,255,255,.82);
+    color:var(--ink-soft);
+  }
+  .about-note__panel::before{
+    background:linear-gradient(118deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.05) 30%,rgba(255,255,255,0) 58%,rgba(255,255,255,.28) 100%);
+  }
+  .about-note__panel p:not(.eyebrow){color:var(--ink-soft);}
+  .about-note__panel strong{color:var(--ink);}
+}
+
+/* ---- The shop strip: four photographs ARE the section ---- */
+#shop{padding-block:0;}
+#shop::before{display:none;}
+.shop-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+.shop-tile{position:relative;margin:0;overflow:hidden;}
+.shop-tile img{
+  display:block;width:100%;
+  height:clamp(300px,36vw,520px);
+  object-fit:cover;
+}
+.shop-tile figcaption{
+  position:absolute;z-index:1;
+  left:clamp(12px,1.3vw,20px);right:clamp(12px,1.3vw,20px);
+  bottom:clamp(12px,1.3vw,20px);
+  padding:.62rem .7rem;
+  text-align:center;
+  clip-path:var(--chamfer-s);
+  background:linear-gradient(152deg,rgba(255,255,255,.3),rgba(255,255,255,.12) 55%,rgba(255,255,255,.2));
+  backdrop-filter:blur(14px) saturate(1.2);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border:1px solid rgba(255,255,255,.42);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+  color:#fff;
+  font-family:var(--font-mono);
+  font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+}
+@media (max-width:820px){.shop-strip{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:520px){.shop-strip{grid-template-columns:1fr;}}
+
+/* ---- Contact band ---- */
+/* Mirrored so the figure sits on the left, and a much thinner wash so
+   the photograph actually reads. */
+.contact-section::before{
+  transform:scaleX(-1);
+  opacity:.8;
+  background-image:
+    linear-gradient(180deg,rgba(244,244,242,.6),rgba(224,228,230,.68)),
+    url("client-meeting.webp");
+}
+@media (max-width:980px){.contact-section::before{opacity:.7;}}
+/* The heading drops to the foot of its column so the figure has the top. */
+.contact-intro{align-self:end;}
+
+/* The form sits behind its own sheet of glass. */
+.contact-form{
+  padding:clamp(20px,2.4vw,34px);
+  clip-path:var(--chamfer-m);
+  background:linear-gradient(152deg,rgba(255,255,255,.52),rgba(255,255,255,.3) 50%,rgba(232,236,240,.44));
+  backdrop-filter:blur(22px) saturate(1.25);
+  -webkit-backdrop-filter:blur(22px) saturate(1.25);
+  border:1px solid rgba(255,255,255,.62);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -26px 44px -32px rgba(18,26,36,.3);
+}
+/* Room around the placeholder instead of it hugging the edge. */
+.field input,
+.field textarea{padding:.92rem 1.05rem;}
+.field textarea{padding-top:.95rem;min-height:104px;}
 </style>
 </head>
 <body>
@@ -2589,29 +2681,23 @@ h1,h2,h3,
 
 <!-- ============ SHOP ============ -->
 <section class="section" id="shop" style="scroll-margin-top:80px">
-  <div class="container">
-    <div class="work-head reveal">
-      <p class="eyebrow">Inside the shop</p>
-      <h2 class="h-section">Cut, framed, finished.</h2>
-    </div>
-    <div class="project-gallery reveal" data-d="1" aria-label="Fabrication photos">
-      <figure class="project-card">
-        <img src="aluminum-profiles.webp" alt="Aluminum extrusion profiles racked in the shop" loading="lazy" />
-        <figcaption>Aluminum stock</figcaption>
-      </figure>
-      <figure class="project-card">
-        <img src="frame-assembly.webp" alt="Fabricator assembling an aluminum frame at the bench" loading="lazy" />
-        <figcaption>Frame assembly</figcaption>
-      </figure>
-      <figure class="project-card">
-        <img src="frame-detail.webp" alt="Corner joint and hardware on a finished aluminum frame" loading="lazy" />
-        <figcaption>Hardware fit-out</figcaption>
-      </figure>
-      <figure class="project-card">
-        <img src="glass-and-frames.webp" alt="Glass sheets racked beside completed window frames" loading="lazy" />
-        <figcaption>Ready to ship</figcaption>
-      </figure>
-    </div>
+  <div class="shop-strip reveal" aria-label="Inside the shop">
+    <figure class="shop-tile">
+      <img src="aluminum-profiles.webp" alt="Aluminum extrusion profiles racked in the shop" loading="lazy" />
+      <figcaption>Aluminum stock</figcaption>
+    </figure>
+    <figure class="shop-tile">
+      <img src="frame-assembly.webp" alt="Fabricator assembling an aluminum frame at the bench" loading="lazy" />
+      <figcaption>Frame assembly</figcaption>
+    </figure>
+    <figure class="shop-tile">
+      <img src="frame-detail.webp" alt="Corner joint and hardware on a finished aluminum frame" loading="lazy" />
+      <figcaption>Hardware fit-out</figcaption>
+    </figure>
+    <figure class="shop-tile">
+      <img src="glass-and-frames.webp" alt="Glass sheets racked beside completed window frames" loading="lazy" />
+      <figcaption>Ready to ship</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -2723,9 +2809,7 @@ h1,h2,h3,
   <div class="container">
     <div class="contact-grid contact-top">
       <div class="contact-intro reveal">
-        <p class="eyebrow">Start a project</p>
         <h2 class="h-section">Let’s talk <span class="accent">glass</span>.</h2>
-        <p class="lead">Tell us what you’re building. We’ll handle the rest</p>
       </div>
 
       <!-- Front-end form. Default opens the visitor's mail app (works on a static host).
