@@ -2619,6 +2619,64 @@ h1,h2,h3,
 
 /* Heading sits lower still. */
 .contact-intro{padding-bottom:clamp(2px,.8vw,12px);}
+
+/* ---- 9o. Products band goes dark ----
+   It was pale card on pale panel on pale band - three greys within a few
+   percent of each other and nothing to look at. Dark makes this the one
+   anchor between the light sections, and the Grandeur plate finally
+   reads as a lit panel rather than a white rectangle on white. */
+#brands{
+  background:
+    radial-gradient(54% 78% at 8% 2%,rgba(22,162,222,.18),transparent 62%),
+    radial-gradient(46% 68% at 94% 100%,rgba(225,28,36,.13),transparent 66%),
+    linear-gradient(180deg,#242119 0%,#17150F 100%);
+  color:#B6AFA4;
+}
+#brands::before{
+  background-image:
+    linear-gradient(180deg,rgba(20,18,14,.8),rgba(12,11,8,.88)),
+    url("aluminum-profiles.webp");
+  opacity:.6;
+  filter:grayscale(1) contrast(1.05) brightness(.95);
+}
+#brands .h-section{color:#F4F0E9;}
+#brands .h-section .accent{color:var(--red);}
+#brands .eyebrow{color:#FF6B72;}
+#brands .brand-tag{color:#8FDCFF;}
+#brands .brand-name{color:#fff;}
+#brands .brand p{color:#BEB7AC;}
+#brands .brands-cta{border-top-color:rgba(255,255,255,.15);}
+#brands .brands-cta-text{color:#BEB7AC;}
+#brands .brands-cta-text b{color:#fff;}
+
+/* The panel is tinted glass now, not frosted white. */
+#brands .brands--single .brand{
+  background-image:linear-gradient(152deg,rgba(255,255,255,.1),rgba(255,255,255,.035) 52%,rgba(255,255,255,.07));
+  border-color:rgba(255,255,255,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -28px 48px -34px rgba(0,0,0,.55);
+}
+/* The logo plate stays light, so on this band it glows. */
+#brands .brand:first-child .brand-logo-card img{
+  max-width:80%;
+  max-height:clamp(168px,17vw,238px);
+}
+
+#brands .spec{
+  background:linear-gradient(152deg,rgba(255,255,255,.13),rgba(255,255,255,.05));
+  border-color:rgba(255,255,255,.2);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.26);
+  color:#E8E3DB;
+}
+#brands .spec:hover{
+  background:linear-gradient(152deg,rgba(255,255,255,.21),rgba(255,255,255,.09));
+  border-color:rgba(255,255,255,.36);
+}
+#brands .spec-ico{
+  background:linear-gradient(150deg,rgba(255,255,255,.17),rgba(255,255,255,.06));
+  border-color:rgba(143,220,255,.36);
+  color:#8FDCFF;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.32);
+}
 </style>
 </head>
 <body>
