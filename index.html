@@ -2664,15 +2664,16 @@ h1,h2,h3,
 }
 .grandeur-mark{
   display:flex;align-items:center;justify-content:center;
-  gap:clamp(16px,1.8vw,26px);
+  gap:clamp(20px,2.2vw,32px);
   margin:clamp(26px,3vw,42px) 0 0;
 }
-.grandeur-mark img{height:clamp(40px,4vw,60px);width:auto;display:block;}
+.grandeur-mark img{height:clamp(58px,6.2vw,96px);width:auto;display:block;}
 .grandeur-mark span{
   font-family:var(--font-mono);
-  font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+  font-size:clamp(.74rem,.64rem + .22vw,.92rem);
+  letter-spacing:.22em;text-transform:uppercase;
   color:var(--blue-deep);
-  padding-left:clamp(16px,1.8vw,26px);
+  padding-left:clamp(20px,2.2vw,32px);
   border-left:1px solid rgba(38,28,18,.22);
 }
 .grandeur-lead{
@@ -2687,32 +2688,33 @@ h1,h2,h3,
   display:grid;
   grid-template-columns:repeat(5,minmax(0,1fr));
   gap:clamp(10px,1.4vw,22px);
-  align-items:end;
+  align-items:stretch;
 }
 .parts li{
   display:flex;flex-direction:column;align-items:center;
-  gap:clamp(.7rem,1vw,1rem);
-  padding:clamp(24px,2.6vw,38px) clamp(10px,1.2vw,18px) clamp(20px,2.2vw,32px);
+  gap:clamp(.5rem,.7vw,.75rem);
+  padding:clamp(16px,1.7vw,24px) clamp(8px,1vw,14px) clamp(14px,1.5vw,20px);
   position:relative;
-  border:1px solid rgba(38,28,18,.15);
+  border:1px solid rgba(255,255,255,.5);
   clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
-  background:linear-gradient(158deg,rgba(255,255,255,.86),rgba(255,255,255,.42) 48%,rgba(228,232,236,.56));
-  backdrop-filter:blur(16px) saturate(1.22);
-  -webkit-backdrop-filter:blur(16px) saturate(1.22);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.95),inset 0 -22px 38px -28px rgba(18,26,36,.3);
-  transform:rotate(var(--tilt,0deg)) translateY(var(--drop,0px));
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
+  /* barely any paint: the blur behind is what makes it read as glass,
+     so the band texture bends through rather than being covered up */
+  background:linear-gradient(158deg,rgba(255,255,255,.3),rgba(255,255,255,.08) 46%,rgba(255,255,255,.2));
+  backdrop-filter:blur(13px) saturate(1.6) brightness(1.05);
+  -webkit-backdrop-filter:blur(13px) saturate(1.6) brightness(1.05);
+  /* specular down the lit edges, shade on the far ones */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.9),
+    inset 1px 0 0 rgba(255,255,255,.45),
+    inset -1px 0 0 rgba(255,255,255,.2),
+    inset 0 -20px 34px -26px rgba(18,26,36,.28);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s var(--ease);
 }
-/* racked, not aligned */
-.parts li:nth-child(1){--tilt:-1.7deg;--drop:7px;}
-.parts li:nth-child(2){--tilt:1.1deg;--drop:-5px;}
-.parts li:nth-child(3){--tilt:-.7deg;--drop:9px;}
-.parts li:nth-child(4){--tilt:1.9deg;--drop:-3px;}
-.parts li:nth-child(5){--tilt:-1.3deg;--drop:6px;}
 .parts li:hover{
-  transform:rotate(0deg) translateY(-8px);
-  border-color:rgba(255,255,255,.9);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,1),inset 0 -22px 38px -28px rgba(18,26,36,.22);
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.85);
+  backdrop-filter:blur(17px) saturate(1.8) brightness(1.08);
+  -webkit-backdrop-filter:blur(17px) saturate(1.8) brightness(1.08);
 }
 /* the prism, as on the logo plate */
 .parts li::after{
@@ -2747,7 +2749,6 @@ h1,h2,h3,
 @media (max-width:980px){
   .grandeur .h-section{white-space:normal;}
   .parts{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
-  .parts li{--tilt:0deg;--drop:0px;}
 }
 @media (max-width:560px){
   .parts{grid-template-columns:repeat(2,minmax(0,1fr));}
